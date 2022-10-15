@@ -10,7 +10,7 @@ console.log({ agodaUrl });
 
 (async () => {
   const browser = await puppeteer.launch({ headless: !false });
-  console.log({ browserAgent: await browser.userAgent() });
+
   const page = await browser.newPage();
 
   await page.goto(agodaUrl, { waitUntil: "domcontentloaded" });
@@ -19,7 +19,6 @@ console.log({ agodaUrl });
 
   await page.waitForSelector(selector);
 
-  // const inner_html = await page.$eval(selector, (element) => element.innerHTML);
   const response = await page.evaluate((selector) => {
     const dataset = document.querySelector(selector).dataset;
     return Object.fromEntries(Object.entries(dataset));
@@ -28,6 +27,9 @@ console.log({ agodaUrl });
   const { currentPrice } = response;
 
   console.log({ currentPrice });
+  console.log(
+    "Despite setting currency type, price is always returned in USD. There is need for another API for price conversion"
+  );
 
   saveResponse(currentPrice);
 
