@@ -1,0 +1,15 @@
+{
+  "name": "test-ratepunk",
+  "version": "1.0.0",
+  "description": "get room price from agoda",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "damdafayton",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^19.0.0"
+  }
+}
